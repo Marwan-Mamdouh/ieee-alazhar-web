@@ -38,7 +38,7 @@ export default function CardSlider({ cards }) {
                     disableOnInteraction: false,
                 }}
                 speed={700}
-                loop={totalSlides > 3 ? true : false} 
+                loop={totalSlides > 3} 
                 loopedslides={totalSlides} 
                 breakpoints={{
                     0: {

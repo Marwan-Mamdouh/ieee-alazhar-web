@@ -72,7 +72,7 @@ const useFetch = <T, TBody = Record<string, unknown>>(
 				}
 
 				const json = await response.json();
-				setData((json.data as T) ?? null);
+				setData((json.data as T) ?? json.message ?? null);
 			} catch (e) {
 				if ((e as Error).name === "AbortError") return;
 				const message =

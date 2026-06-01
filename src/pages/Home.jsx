@@ -1,28 +1,25 @@
 // Home.jsx (الكود النهائي المبسَّط للوصول العام)
-import useFetch from "./hooks/useFetch";
+import { useFetch } from "../hooks";
 import { Link } from "react-router-dom";
 import { FaArrowUp } from "react-icons/fa";
-import CardSlider from "./component/CardSlider";
-import CardEvent from "./component/CardEvent";
-import CardLogo from "./component/CardLogo";
-import Card from "./component/Card";
+import { CardSlider, CardEvent, CardLogo, Card } from "../component";
 
 // imports المحتوى الثابت
-import Logo from "./assets/logo.WebP";
-import discover from "./assets/home-img/discover.jpg";
-import pic1 from "./assets/home-img/pic-1.jpg";
-import pic2 from "./assets/home-img/pic-2.jpg";
-import pic3 from "./assets/home-img/pic-3.jpg";
-import bubble1 from "./assets/section-bubles/bubble1.png";
-import bubble2 from "./assets/section-bubles/bubble2.png";
-import aiGame from "./assets/events-img/AI Game.jpg";
-import codeBaker from "./assets/events-img/Code Baker.jpg";
-import juniorCamp from "./assets/events-img/Junior Camp.jpg";
-import kickStart from "./assets/events-img/KickStart.jpg";
-import Semicolon from "./assets/events-img/The Semicolon Show.jpg";
-import multi from "./assets/home-img/multi.svg";
-import operation from "./assets/home-img/operation.svg";
-import tech from "./assets/home-img/tech.svg";
+import Logo from "../assets/logo.WebP";
+import discover from "../assets/home-img/discover.jpg";
+import pic1 from "../assets/home-img/pic-1.jpg";
+import pic2 from "../assets/home-img/pic-2.jpg";
+import pic3 from "../assets/home-img/pic-3.jpg";
+import bubble1 from "../assets/section-bubles/bubble1.png";
+import bubble2 from "../assets/section-bubles/bubble2.png";
+import aiGame from "../assets/events-img/AI Game.jpg";
+import codeBaker from "../assets/events-img/Code Baker.jpg";
+import juniorCamp from "../assets/events-img/Junior Camp.jpg";
+import kickStart from "../assets/events-img/KickStart.jpg";
+import Semicolon from "../assets/events-img/The Semicolon Show.jpg";
+import multi from "../assets/home-img/multi.svg";
+import operation from "../assets/home-img/operation.svg";
+import tech from "../assets/home-img/tech.svg";
 
 // قائمة الأحداث الثابتة
 const staticEventCards = [
@@ -79,7 +76,7 @@ const staticEventCards = [
 ];
 
 const Home = () => {
-	const lastYear = (new Date().getFullYear() - 1).toString();
+	const lastYear = new Date().getFullYear().toString();
 	const { data, isLoading, error } = useFetch(`/api/v1/board`, {
 		queryParams: {
 			yearFrom: lastYear,
@@ -151,7 +148,7 @@ const Home = () => {
 							src={bubble1}
 							alt="bubble1"
 							loading="lazy"
-							className="absolute lg:bottom-[-100px] lg:right-[90px] lg:-translate-y-[20%]  bottom-[120px] left-[-10px] w-[250px] sm:w-434 lg:w-[350px]  rotate-[43.61deg]"
+							className="absolute lg:bottom-[-100px] lg:right-[90px] lg:-translate-y-[20%] bottom-[120px] left-[-10px] w-[250px] sm:w-434 lg:w-[350px] rotate-[43.61deg]"
 						/>
 						<img
 							src={bubble2}
@@ -163,7 +160,7 @@ const Home = () => {
 				</div>
 			</div>
 
-			<div className="grid grid-cols-1 sm:grid-cols-2  w-full">
+			<div className="grid grid-cols-1 sm:grid-cols-2  w-full">
 				<div className="bg-white flex items-center justify-center py-1 px-6">
 					<div className="bg-gray-100 rounded-full px-6 py-4 text-center text-sm md:text-base font-medium text-gray-800">
 						Connect, Learn, and Build Tomorrow's Technology Together
@@ -174,7 +171,7 @@ const Home = () => {
 
 			<div className="px-10 py-10">
 				{/* --------------------------- DISCOVER SECTION --------------------------- */}
-				<h2 className="flex flex-col sm:flex-row items-start sm:items-center text-lg sm:text-2xl  gap-2">
+				<h2 className="flex flex-col sm:flex-row items-start sm:items-center text-lg sm:text-2xl gap-2">
 					<span className="font-bold bg-red-600 text-white px-2 py-1 rounded-tr-2xl rounded-br-2xl">
 						Discover IEEE Al-Azhar SB
 					</span>
@@ -288,7 +285,7 @@ const Home = () => {
 						<CardLogo
 							imageSrc={multi}
 							title="Multi Media Committees"
-							description="Multimedia Committees focus on crafting the team’s identity through creative content, design, and digital communication."
+							description="Multimedia Committees focus on crafting the team's identity through creative content, design, and digital communication."
 						/>
 					</div>
 				</div>
@@ -298,7 +295,7 @@ const Home = () => {
 			{/* OUR TEAM SECTION (DYNAMICALLY LOADED OFFICERS) */}
 			{/* -------------------------------------------------------------------------- */}
 			<div className="px-10 py-10">
-				<h2 className="flex flex-col sm:flex-row items-start sm:items-center text-lg sm:text-2xl  gap-2">
+				<h2 className="flex flex-col sm:flex-row items-start sm:items-center text-lg sm:text-2xl gap-2">
 					<span className="font-bold bg-red-600 text-white px-2 py-1 rounded-tr-2xl rounded-br-2xl">
 						Our Team
 					</span>
@@ -325,7 +322,7 @@ const Home = () => {
 								key={member.id}
 								title={member.name}
 								subtitle={member.position}
-								imageSrc={member.image}
+								imageSrc={member.image_url}
 								linkedinLink={member.linkedin}
 							/>
 						))}

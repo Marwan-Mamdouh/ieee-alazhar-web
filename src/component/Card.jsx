@@ -28,7 +28,7 @@ const Card = ({ title, subtitle, imageSrc, text, linkedinLink }) => {
         
         {/* المنصب (Subtitle) */}
         {subtitle && (
-          <p className="text-red-700 text-sm text-center font-medium">
+          <p className="text-red-700 text-sm text-center font-medium capitalize">
             {subtitle}
           </p>
         )}

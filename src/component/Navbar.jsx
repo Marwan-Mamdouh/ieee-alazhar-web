@@ -2,7 +2,7 @@ import { Menu, X } from "lucide-react";
 import { useState } from "react";
 import { Link, useLocation } from "react-router-dom"; 
 import { FaArrowUp } from "react-icons/fa";
-import Logo from "../src/assets/logo.WebP";
+import Logo from "../assets/logo.WebP";
 
 const Navbar = () => {
   const [isOpen, setIsOpen] = useState(false);
@@ -66,7 +66,7 @@ const isEventDetailsPage = location.pathname.startsWith("/eventdetails");
         {/* Explore Button on the side */}
         <Link
           to="/contactus"
-          className="hidden md:flex flex items-center gap-2 bg-white text-[#05568D] font-bold py-2 px-4 rounded-full transition duration-300 w-max ml-6"
+          className="hidden md:flex items-center gap-2 bg-white text-[#05568D] font-bold py-2 px-4 rounded-full transition duration-300 w-max ml-6"
         >
           <span>Contact Us</span>
           <span className="w-6 h-6 flex items-center justify-center rounded-full bg-[#05568D]">

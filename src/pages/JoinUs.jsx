@@ -1,6 +1,6 @@
 import { useState } from "react";
-import Section from "./component/Section";
-import boy from "../src/assets/home-img/boy.svg";
+import { Section } from "../component";
+import boy from "../assets/home-img/boy.svg";
 
 // كل لجنة ومعاها الأقسام الفرعية
 const subCommittees = {

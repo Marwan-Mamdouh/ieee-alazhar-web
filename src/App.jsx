@@ -1,21 +1,22 @@
 import { BrowserRouter, Routes, Route } from "react-router-dom";
-import Navbar from "./Navbar";
-import Footer from "./component/Footer";
-import Home from "./Home";
-import About from "./About";
-import Events from "./Events";
-import EventDetails from "./EventDetails.jsx";
-import Committees from "./Committees";
-import Board from "./Board";
-import ContactUs from "./ContactUs";
-import JoinUs from "./JoinUs";
-import ScrollToTop from "./ScrollToTop";
+import { Navbar, Footer } from "./component";
+import {
+	Home,
+	About,
+	Events,
+	Committees,
+	Board,
+	EventDetails,
+	ContactUs,
+	JoinUs,
+} from "./pages";
+import { useScrollToTop } from "./hooks";
 
 function App() {
 	return (
 		<BrowserRouter>
 			<Navbar />
-			<ScrollToTop />
+			<useScrollToTop />
 			{/* <Section />  */}
 			<Routes>
 				<Route path="/" element={<Home />} />

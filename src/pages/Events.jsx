@@ -1,10 +1,9 @@
-import Section from "./component/Section";
-import CardEvent from "./component/CardEvent";
-import aiGame from "../src/assets/events-img/AI Game.jpg";
-import codeBaker from "../src/assets/events-img/Code Baker.jpg";
-import juniorCamp from "../src/assets/events-img/Junior Camp.jpg";
-import kickStart from "../src/assets/events-img/KickStart.jpg";
-import Semicolon from "../src/assets/events-img/The Semicolon Show.jpg";
+import { Section, CardEvent } from "../component";
+import aiGame from "../assets/events-img/AI Game.jpg";
+import codeBaker from "../assets/events-img/Code Baker.jpg";
+import juniorCamp from "../assets/events-img/Junior Camp.jpg";
+import kickStart from "../assets/events-img/KickStart.jpg";
+import Semicolon from "../assets/events-img/The Semicolon Show.jpg";
 const Events = () => {
 	return (
 		<div>

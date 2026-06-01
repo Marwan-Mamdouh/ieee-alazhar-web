@@ -1,20 +1,18 @@
 // About.jsx (الكود النهائي المبسَّط للوصول العام)
-import useFetch from "./hooks/useFetch";
-import Section from "./component/Section";
-import Card from "./component/Card";
-import CardSlider from "./component/CardSlider";
+import { useFetch } from "../hooks";
+import { Section, CardSlider, Card } from "../component";
 
 // imports المحتوى الثابت
-import firstPic from "../src/assets/about-img/firstpic.jpg";
-import secondPic from "../src/assets/about-img/2rdpic.jpg";
-import firstBox from "../src/assets/about-img/firstbox.svg";
-import since2013 from "../src/assets/about-img/sence2013.svg";
-import codeBaker from "../src/assets/about-img/codebaker.svg";
-import workshops from "../src/assets/about-img/workshops.svg";
-import since2018 from "../src/assets/about-img/sence2018.svg";
+import firstPic from "../assets/about-img/firstpic.jpg";
+import secondPic from "../assets/about-img/2rdpic.jpg";
+import firstBox from "../assets/about-img/firstbox.svg";
+import since2013 from "../assets/about-img/sence2013.svg";
+import codeBaker from "../assets/about-img/codebaker.svg";
+import workshops from "../assets/about-img/workshops.svg";
+import since2018 from "../assets/about-img/sence2018.svg";
 
 const About = () => {
-	const lastYear = (new Date().getFullYear() - 1).toString();
+	const lastYear = new Date().getFullYear().toString();
 	const { data, isLoading, error } = useFetch("/api/v1/board", {
 		queryParams: {
 			yearFrom: lastYear,
@@ -123,7 +121,7 @@ const About = () => {
 					</h2>
 
 					<div className="lg:ml-[72px] m-[28px] grid md:grid-cols-2 lg:grid-cols-3 gap-[40px] justify-center">
-						<div className="bg-[#05568D] relative lg:p-[160px] rounded-2xl md:rounded-[50%] sm:p-[48px] w-[302px] h-[100px] px-10 text-[#FFFFFF] text-[24px] sm:text-[28px] md:text-[32px] font-bold flex flex-col justify-center items-center  lg:row-start-2 lg:col-start-2 lg:col-end-4 lg:row-end-5 md:row-start-2 md:col-start-1 sm:col-start-1 sm:row-start-1">
+						<div className="bg-[#05568D] relative lg:p-[160px] rounded-2xl md:rounded-[50%] sm:p-[48px] w-[302px] h-[100px] px-10 text-[#FFFFFF] text-[24px] sm:text-[28px] md:text-[32px] font-bold flex flex-col justify-center items-center lg:row-start-2 lg:col-start-2 lg:col-end-4 lg:row-end-5 md:row-start-2 md:col-start-1 sm:col-start-1 sm:row-start-1">
 							{" "}
 							<p className="text-center">Our</p>
 							<p className="text-center">Achievements</p>
@@ -212,7 +210,7 @@ const About = () => {
 								key={chairman.id}
 								title={chairman.name}
 								subtitle={chairman.position} // المنصب + السيزون
-								imageSrc={chairman.image}
+								imageSrc={chairman.image_url}
 								text={chairman.bio}
 								linkedinLink={chairman.linkedin}
 							/>

@@ -1,6 +1,6 @@
 import { useState, useEffect } from "react"; // Missing import
-import useFetch from "./hooks/useFetch"; // Ensure this path correctly points to your hook
-import Section from "./component/Section";
+import { useFetch } from "../hooks"; // Ensure this path correctly points to your hook
+import { Section } from "../component";
 import {
 	FaUser,
 	FaEnvelope,

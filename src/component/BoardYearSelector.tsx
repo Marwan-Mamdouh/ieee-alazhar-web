@@ -38,7 +38,7 @@ const BoardYearSelector = ({
 	// Fetch the available years from the API.
 	// If your backend doesn't have a /years endpoint yet, see the comment below.
 	const { data, isLoading, error } = useFetch<YearsResponse>(
-	  "/api/v1/board/years",
+		"/api/v1/board/years",
 	);
 
 	// ── Fallback: if the backend has no /years endpoint yet ─────────────────────
@@ -102,7 +102,7 @@ const BoardYearSelector = ({
 				>
 					{years.map((year) => (
 						<option key={year} value={year}>
-							{year} - {Number.parseInt(year, 10) + 1}
+							{Number.parseInt(year, 10) - 1} - {year}
 						</option>
 					))}
 				</select>
@@ -130,4 +130,3 @@ const BoardYearSelector = ({
 };
 
 export default BoardYearSelector;
-

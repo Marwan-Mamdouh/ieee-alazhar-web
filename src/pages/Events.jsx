@@ -4,6 +4,9 @@ import codeBaker from "../assets/events-img/Code Baker.jpg";
 import juniorCamp from "../assets/events-img/Junior Camp.jpg";
 import kickStart from "../assets/events-img/KickStart.jpg";
 import Semicolon from "../assets/events-img/The Semicolon Show.jpg";
+
+// TODO: we should introduce a state management system to not make to api calls for the same data
+// this page should use the state management system like context api or redux for better handling for this events, and this should not be hard coded at all !!!
 const Events = () => {
 	return (
 		<div>

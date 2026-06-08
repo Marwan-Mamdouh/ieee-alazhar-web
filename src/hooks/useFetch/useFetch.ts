@@ -2,7 +2,7 @@ import { useState, useEffect, useCallback, useRef } from "react";
 
 type HttpMethod = "GET" | "POST" | "PUT" | "PATCH" | "DELETE";
 
-export interface UseFetchOptions<TBody> {
+interface UseFetchOptions<TBody> {
 	/**
 	 * Query params to append to the URL.
 	 * The hook re-fetches whenever this object's values change (shallow compare).

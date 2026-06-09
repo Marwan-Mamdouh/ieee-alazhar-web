@@ -24,7 +24,7 @@ const Footer = () => {
             { label: "Contact Us", url: "/contactus" },
           ].map((link, i) => (
             <Link
-              key={i}
+              key={`${i}-${link.label}`}
               to={link.url}
               className="hover:underline transition duration-200"
             >
@@ -50,7 +50,7 @@ const Footer = () => {
             },
           ].map(({ icon: Icon, url }, i) => (
             <a
-              key={i}
+              key={`${i}-${url}`}
               href={url}
               target="_blank"
               rel="noopener noreferrer"
@@ -63,12 +63,12 @@ const Footer = () => {
       </div>
 
       <div className="container mx-auto px-4 mt-8 grid md:grid-cols-2 gap-6 text-white">
-        <div className="rounded-lg p-6 bg-transparent text-white">
-          <div className="bg-white text-[#05568D] p-1 rounded-md mb-4 w-fit">
-            <h3 className="font-bold text-xl">Contact Us:</h3>
+        <div className="p-6 bg-transparent text-white">
+          <div className="bg-white text-[#05568D] px-3 rounded-full w-fit">
+            <h3 className="font-bold text-xl">reach out:</h3>
           </div>
 
-          <p>Email: alazharieee@gmail.com</p>
+          <a href="mailto:alazharieee@gmail.com">alazharieee@gmail.com</a>
         </div>
 
         <div className="flex items-center ">
@@ -76,11 +76,11 @@ const Footer = () => {
             <input
               type="email"
               placeholder="Email"
-              className="flex-1 px-4 py-2 rounded-xl border border-white bg-transparent text-white placeholder-white focus:outline-none focus:ring-2 focus:ring-white"
+              className="flex-1 px-4 py-2 rounded-full border border-white bg-transparent text-white placeholder-white focus:outline-none focus:ring-2 focus:ring-white"
             />
             <button
               type="submit"
-              className="bg-white text-[#05568D] font-bold px-4 py-2 rounded hover:bg-blue-50 transition"
+              className="bg-white text-[#05568D] font-bold px-4 py-2 rounded-full hover:bg-blue-50 transition"
             >
               Subscribe to news
             </button>

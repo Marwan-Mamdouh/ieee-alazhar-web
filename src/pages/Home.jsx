@@ -37,8 +37,6 @@ const Home = () => {
     })();
   }, []);
 
-  // const fetchEvents =
-  console.log(events, "events");
   return (
     <div>
       {/* --------------------------- HEADER SECTION --------------------------- */}

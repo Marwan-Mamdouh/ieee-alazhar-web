@@ -2,6 +2,7 @@
 import { Fragment, useState } from "react";
 import { useFetch } from "../hooks";
 import { Section, CardSlider, Card, BoardYearSelector } from "../component";
+import { selectMemberPosition } from "../utils/member.position";
 
 // *******************************************************
 // الإعدادات - نستخدم الرابط مباشرة من متغيرات بيئة Vite
@@ -46,25 +47,26 @@ const Board = () => {
 							{title}
 						</span>
 						<span className="text-[#000000]">
-							The Heart of IEEE Al-Azhar SB: Talented Individuals, Shared
-							Goals{" "}
+							The Heart of IEEE Al-Azhar SB: Talented Individuals, Shared Goals
 						</span>
 					</h2>
 				</div>
 				<CardSlider
-					cards={data.map((member) => (
-						<Card
-							key={member.id}
-							title={member.name}
-							subtitle={
-								member.memberType === "officer"
-									? member.position
-									: `${member.position} of ${member.track}`
-							}
-							imageSrc={member.image_url}
-							linkedinLink={member.linkedin}
-						/>
-					))}
+					cards={data.map((member) => {
+						let position = selectMemberPosition(
+							member,
+							boardData.officer[0].gender,
+						);
+						return (
+							<Card
+								key={member.id}
+								title={member.name}
+								subtitle={position}
+								imageSrc={member.image_url}
+								linkedinLink={member.linkedin}
+							/>
+						);
+					})}
 				/>
 			</Fragment>
 		);
@@ -109,3 +111,4 @@ const Board = () => {
 };
 
 export default Board;
+

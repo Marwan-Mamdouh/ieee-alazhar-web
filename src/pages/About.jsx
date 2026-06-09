@@ -1,6 +1,7 @@
 // About.jsx (الكود النهائي المبسَّط للوصول العام)
 import { useFetch } from "../hooks";
 import { Section, CardSlider, Card } from "../component";
+import { selectMemberPosition } from "../utils/member.position";
 
 // imports المحتوى الثابت
 import firstPic from "../assets/about-img/firstpic.jpg";
@@ -20,7 +21,7 @@ const About = () => {
 			position: "Chair",
 		},
 	});
-	const lastChairmen = data?.officer ?? [];
+	const lastChairPerson = data?.officer ?? [];
 
 	return (
 		<div className="w-full overflow-hidden ">
@@ -203,16 +204,16 @@ const About = () => {
 				{error && <p className="text-red-600 font-bold">{error}</p>}
 
 				{/* 🚨 العرض المصحح: نتحقق من أن lastChairmen مصفوفة ونقوم بتمريرها */}
-				{!isLoading && lastChairmen.length > 0 ? (
+				{!isLoading && lastChairPerson.length > 0 ? (
 					<CardSlider
-						cards={lastChairmen.map((chairman) => (
+						cards={lastChairPerson.map((chairPerson) => (
 							<Card
-								key={chairman.id}
-								title={chairman.name}
-								subtitle={chairman.position} // المنصب + السيزون
-								imageSrc={chairman.image_url}
-								text={chairman.bio}
-								linkedinLink={chairman.linkedin}
+								key={chairPerson.id}
+								title={chairPerson.name}
+								subtitle={selectMemberPosition(chairPerson, chairPerson.gender)} // المنصب + السيزون
+								imageSrc={chairPerson.image_url}
+								text={chairPerson.bio}
+								linkedinLink={chairPerson.linkedin}
 							/>
 						))}
 					/>
@@ -221,7 +222,6 @@ const About = () => {
 				) : null}
 			</div>
 
-			{/* <Footer /> */}
 		</div>
 	);
 };

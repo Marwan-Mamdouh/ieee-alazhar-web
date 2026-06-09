@@ -3,6 +3,7 @@ import { useFetch } from "../hooks";
 import { Link } from "react-router-dom";
 import { FaArrowUp } from "react-icons/fa";
 import { CardSlider, CardEvent, CardLogo, Card } from "../component";
+import { selectMemberPosition } from "../utils/member.position";
 
 // imports المحتوى الثابت
 import Logo from "../assets/logo.WebP";
@@ -289,7 +290,7 @@ const Home = () => {
               <Card
                 key={member.id}
                 title={member.name}
-                subtitle={member.position}
+                subtitle={selectMemberPosition(member, officers[0].gender)}
                 imageSrc={member.image_url}
                 linkedinLink={member.linkedin}
               />

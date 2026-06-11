@@ -1,5 +1,5 @@
 import { BrowserRouter, Routes, Route } from "react-router-dom";
-import { Navbar, Footer } from "./component";
+import { Navbar, Footer, ScrollToTop } from "./component";
 import {
 	Home,
 	About,
@@ -10,13 +10,12 @@ import {
 	ContactUs,
 	JoinUs,
 } from "./pages";
-import { useScrollToTop } from "./hooks";
 
 function App() {
 	return (
 		<BrowserRouter>
 			<Navbar />
-			<useScrollToTop />
+			<ScrollToTop />
 			{/* <Section />  */}
 			<Routes>
 				<Route path="/" element={<Home />} />

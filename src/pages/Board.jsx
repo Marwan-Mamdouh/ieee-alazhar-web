@@ -55,7 +55,7 @@ const Board = () => {
 					cards={data.map((member) => {
 						let position = selectMemberPosition(
 							member,
-							boardData.officer[0].gender,
+							boardData?.officer[0]?.gender,
 						);
 						return (
 							<Card

@@ -290,7 +290,7 @@ const Home = () => {
               <Card
                 key={member.id}
                 title={member.name}
-                subtitle={selectMemberPosition(member, officers[0].gender)}
+                subtitle={selectMemberPosition(member, officers[0]?.gender)}
                 imageSrc={member.image_url}
                 linkedinLink={member.linkedin}
               />

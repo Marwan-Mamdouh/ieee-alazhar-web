@@ -18,7 +18,7 @@ const navLinks: NavLinkItem[] = [
 ];
 
 const contactButtonClassName =
-  "flex items-center gap-2 bg-white text-[#05568D] font-bold py-2 px-4 rounded-full transition duration-300 w-max";
+  "flex items-center gap-2 bg-white text-[#05568D] font-bold py-1.5 px-3 rounded-full transition duration-300 w-max";
 
 const Navbar = () => {
   const [isOpen, setIsOpen] = useState<boolean>(false);
@@ -42,7 +42,7 @@ const Navbar = () => {
               to={link.to}
               key={link.to}
               className={({ isActive }) =>
-                `font-medium px-3 py-2 rounded-full hover:bg-[#ffffff] hover:text-[#05568d] transition duration-300 ease-in-out flex items-center justify-center ${
+                `font-medium px-3 py-1.5 rounded-full hover:bg-[#ffffff] hover:text-[#05568d] transition duration-300 ease-in-out flex items-center justify-center ${
                   isActive
                     ? "bg-white text-[#05568d] pointer-events-none cursor-default"
                     : "text-white"

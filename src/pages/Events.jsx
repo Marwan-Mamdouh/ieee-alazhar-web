@@ -1,79 +1,52 @@
+import { useState, useEffect } from "react";
+import { getEvents } from "../service/events";
 import { Section, CardEvent } from "../component";
-import aiGame from "../assets/events-img/AI Game.jpg";
-import codeBaker from "../assets/events-img/Code Baker.jpg";
-import juniorCamp from "../assets/events-img/Junior Camp.jpg";
-import kickStart from "../assets/events-img/KickStart.jpg";
-import Semicolon from "../assets/events-img/The Semicolon Show.jpg";
 
-// TODO: we should introduce a state management system to not make to api calls for the same data
-// this page should use the state management system like context api or redux for better handling for this events, and this should not be hard coded at all !!!
 const Events = () => {
-	return (
-		<div>
-			<Section
-				text={`We Are IEEE\nThe Heart of Student Tech`}
-				additionalText="A community of tech enthusiasts driving innovation"
-			/>
-			<div className="px-10 py-1 mt-6">
-				<h2 className="flex flex-col sm:flex-row items-start sm:items-center text-lg sm:text-2xl font-bold gap-2 mb-8">
-					<span className="bg-red-600 text-white px-2 py-1 rounded-tr-2xl rounded-br-2xl">
-						Our Events
-					</span>
-					<span className="text-[#000000]">
-						Dive into a variety of events that fuel learning, creativity, and
-						discovery.
-					</span>
-				</h2>
-			</div>
-			<div className="px-4 md:px-9 grid grid-cols-1 md:grid-cols-2 gap-6">
-				<CardEvent
-					id={1}
-					image={aiGame}
-					title="AI Game"
-					text="An event introducing the fundamentals of artificial intelligence (AI) and its applications."
-					date="29 Feb 2024"
-					location="Al-Azhar University"
-					className={`grid lg:grid-cols-2`}
-				/>
-				<CardEvent
-					id={2}
-					image={codeBaker}
-					title="Code Baker"
-					text="A camp offering technical and non-technical training in various fields"
-					date="End of year vacation"
-					location="Online/Offline"
-					className={`grid lg:grid-cols-2`}
-				/>
-				<CardEvent
-					id={3}
-					image={juniorCamp}
-					title="Junior Camp"
-					text="Camp designed for children and teenagers aged 5 to 18, focusing on programming and digital skills."
-					date="Mid-year vacation"
-					location="Online/Offline"
-					className={`grid lg:grid-cols-2`}
-				/>
-				<CardEvent
-					id={4}
-					image={kickStart}
-					title="KickStart"
-					text="Program introducing participants to computer science, programming, and tech career paths."
-					date="16, 18 Des 2023"
-					location="Al-Azhar University"
-					className={`grid lg:grid-cols-2`}
-				/>
-				<CardEvent
-					id={5}
-					image={Semicolon}
-					title="The Semicolon Show"
-					text="A problem-solving competition aimed at enhancing problem-solving skills and fostering a competitive spirit."
-					date="Second Semester"
-					location="Online/Offline"
-					className={`grid lg:grid-cols-2`}
-				/>
-			</div>
-		</div>
-	);
+  const [events, setEvents] = useState([]);
+
+  useEffect(() => {
+    (async () => {
+      const result = await getEvents();
+      setEvents(result);
+    })();
+  }, []);
+
+  return (
+    <div>
+      <Section
+        text={`We Are IEEE\nThe Heart of Student Tech`}
+        additionalText="A community of tech enthusiasts driving innovation"
+      />
+      <div className="px-10 my-6 2xl:mt-12">
+        <h2 className="flex flex-col sm:flex-row items-start sm:items-center text-lg sm:text-2xl font-bold gap-2 my-6">
+          <span className="bg-red-600 text-white px-2.5 py-1 rounded-tr-full rounded-br-full">
+            Our Events
+          </span>
+          <span className="text-[#000000]">
+            Dive into a variety of events that fuel learning, creativity, and
+            discovery.
+          </span>
+        </h2>
+      </div>
+      <div className="px-4 md:px-9 grid grid-cols-1 md:grid-cols-2 gap-6 mb-6">
+        {events?.map((event) => {
+          return (
+            <CardEvent
+              key={event._id}
+              id={event._id}
+              image={event.coverImage?.asset?.url}
+              title={event.title}
+              text={event.subtitle}
+              date={`${new Date(event.startDate).toLocaleDateString()} - ${event.endDate ? new Date(event.endDate).toLocaleDateString() : "TBD"}`}
+              location={event.location}
+              className={"grid lg:grid-cols-2"}
+            />
+          );
+        })}
+      </div>
+    </div>
+  );
 };
 
 export default Events;

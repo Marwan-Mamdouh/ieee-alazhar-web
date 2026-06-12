@@ -30,7 +30,7 @@ const About = () => {
 				additionalText="A community of tech enthusiasts driving innovation"
 			/>
 
-			<div className="flex flex-wrap justify-center gap-4 px-4 py-8 relative top-[-95px] z-[899999]">
+			<div className="flex flex-wrap justify-center gap-4 relative -top-[95px] z-[899999]">
 				{[
 					{ number: "+50", text: "Workshops" },
 					{ number: "+200", text: "Trainees" },
@@ -51,9 +51,9 @@ const About = () => {
 				))}
 			</div>
 
-			<div className="px-10 py-10">
+			<div className="px-10">
 				<h2 className="flex flex-col sm:flex-row items-start sm:items-center text-lg sm:text-2xl font-bold gap-2">
-					<span className="bg-red-600 text-white px-2 py-1 rounded-tr-2xl rounded-br-2xl">
+					<span className="bg-red-600 text-white px-2.5 py-1 rounded-tr-full rounded-br-full">
 						About IEEE
 					</span>
 					<span className="text-[#1A1A1A]">
@@ -113,7 +113,7 @@ const About = () => {
 
 				<div className="px-4 py-10">
 					<h2 className="flex flex-col sm:flex-row items-start sm:items-center text-lg sm:text-2xl font-bold gap-2 mb-8">
-						<span className="bg-red-600 text-white px-2 py-1 rounded-tr-2xl rounded-br-2xl">
+						<span className="bg-red-600 text-white px-2 py-1 rounded-tr-full rounded-br-full">
 							What We've Accomplished
 						</span>
 						<span className="text-[#000000]">
@@ -188,7 +188,7 @@ const About = () => {
 			{/* Our Last Chairman Section (القسم الديناميكي) */}
 			<div className="px-10 py-1 mt-6">
 				<h2 className="flex flex-col sm:flex-row items-start sm:items-center text-lg sm:text-2xl font-bold gap-2 mb-8">
-					<span className="bg-red-600 text-white px-2 py-1 rounded-tr-2xl rounded-br-2xl">
+					<span className="bg-red-600 text-white px-2 py-1 rounded-tr-full rounded-br-full">
 						Our last chairperson
 					</span>
 					<span className="text-[#000000]">
@@ -221,7 +221,6 @@ const About = () => {
 					<p>No past chairmen data available.</p>
 				) : null}
 			</div>
-
 		</div>
 	);
 };

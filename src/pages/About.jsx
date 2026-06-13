@@ -213,7 +213,7 @@ const About = () => {
 								subtitle={selectMemberPosition(chairPerson, chairPerson.gender)} // المنصب + السيزون
 								imageSrc={chairPerson.image_url}
 								text={chairPerson.bio}
-								linkedinLink={chairPerson.linkedin}
+								linkedinLink={chairPerson.linkedin_url}
 							/>
 						))}
 					/>

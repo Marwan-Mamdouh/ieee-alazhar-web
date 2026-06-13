@@ -1,8 +1,7 @@
 // component/Card.jsx (النسخة المدمجة والنهائية)
 
 import React from "react";
-import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { faLinkedin } from "@fortawesome/free-brands-svg-icons"; // استيراد أيقونة LinkedIn
+import { FaLinkedin } from "react-icons/fa"; // استيراد أيقونة LinkedIn
 
 // نستخدم props النظام الجديد: title (الاسم), subtitle (المنصب), imageSrc, text (البايو), linkedinLink
 const Card = ({ title, subtitle, imageSrc, text, linkedinLink }) => {
@@ -50,7 +49,7 @@ const Card = ({ title, subtitle, imageSrc, text, linkedinLink }) => {
             // 🚨 تصميم الزر الأنيق المطلوب
             className="inline-flex items-center gap-1 bg-blue-700 hover:bg-blue-800 text-white text-xs font-semibold py-2 px-4 rounded-full transition duration-300 mt-2"
           >
-            <FontAwesomeIcon icon={faLinkedin} className="h-3 w-3" /> 
+            <FaLinkedin className="h-3 w-3" />
             <span>LinkedIn</span>
           </a>
         )}

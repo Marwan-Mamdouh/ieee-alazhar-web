@@ -1,5 +1,4 @@
 // Home.jsx (الكود النهائي المبسَّط للوصول العام)
-import { useFetch } from "../hooks";
 import { Link } from "react-router-dom";
 import { FaArrowUp } from "react-icons/fa";
 import { CardSlider, CardEvent, CardLogo, Card } from "../component";

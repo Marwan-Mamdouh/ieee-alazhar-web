@@ -2,6 +2,7 @@
 import { useBoardQuery } from "../hooks";
 import { Section, CardSlider, Card } from "../component";
 import { selectMemberPosition } from "../utils/member.position";
+import { boardMember } from "../types/board.member";
 
 // imports المحتوى الثابت
 import firstPic from "../assets/about-img/firstpic.jpg";
@@ -12,6 +13,7 @@ import codeBaker from "../assets/about-img/codebaker.svg";
 import workshops from "../assets/about-img/workshops.svg";
 import since2018 from "../assets/about-img/sence2018.svg";
 
+
 const About = () => {
 	const lastYear = new Date().getFullYear().toString();
 
@@ -20,7 +22,6 @@ const About = () => {
 		memberType: "officer",
 		position: "Chair",
   });
-  console.log(data, "hello");
   const lastChairPerson = data?.officer ?? [];
 
 	return (
@@ -198,15 +199,15 @@ const About = () => {
 				</h2>
 			</div>
 
-			<div className="flex justify-center p-8">
+			<div className="flex justify-center px-8">
 				{/* حالات التحميل والخطأ */}
 				{isLoading && <p>Loading...</p>}
-				{error && <p className="text-red-600 font-bold">{error}</p>}
+				{error && <p className="text-red-600 font-bold">{error.message}</p>}
 
 				{/* 🚨 العرض المصحح: نتحقق من أن lastChairmen مصفوفة ونقوم بتمريرها */}
 				{!isLoading && lastChairPerson.length > 0 ? (
 					<CardSlider
-						cards={lastChairPerson.map((chairPerson) => (
+						cards={lastChairPerson.map((chairPerson: boardMember) => (
 							<Card
 								key={chairPerson.id}
 								title={chairPerson.name}

@@ -32,19 +32,7 @@ const BoardYearSelector = ({
 	selectedYear,
 }: BoardYearSelectorProps): JSX.Element => {
 	// Fetch the available years from the API.
-	// If your backend doesn't have a /years endpoint yet, see the comment below.
 	const { data: years = [], isLoading, error } = useBoardYearsQuery();
-
-	// ── Fallback: if the backend has no /years endpoint yet ─────────────────────
-	// Replace the useFetch above with this until you add the endpoint:
-	// const currentYear = new Date().getFullYear();
-	// const fallbackYears = Array.from({ length: 5 }, (_, i) =>
-	// 	(currentYear - i).toString(),
-	// );
-	// const data = { years: fallbackYears };
-	// const isLoading = false;
-	// const error = null;
-	// ─────────────────────────────────────────────────────────────────────────────
 
 	// Auto-select the first year if none is selected yet and data has arrived
 	useEffect(() => {

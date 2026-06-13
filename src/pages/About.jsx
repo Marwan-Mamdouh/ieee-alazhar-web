@@ -1,5 +1,5 @@
-// About.jsx (الكود النهائي المبسَّط للوصول العام)
-import { useFetch } from "../hooks";
+// About.jsx (الكود النهائي المبسَّط للوصول العام)
+import { useBoardQuery } from "../hooks";
 import { Section, CardSlider, Card } from "../component";
 import { selectMemberPosition } from "../utils/member.position";
 
@@ -14,14 +14,14 @@ import since2018 from "../assets/about-img/sence2018.svg";
 
 const About = () => {
 	const lastYear = new Date().getFullYear().toString();
-	const { data, isLoading, error } = useFetch("/api/v1/board", {
-		queryParams: {
-			yearFrom: lastYear,
-			memberType: "officer",
-			position: "Chair",
-		},
-	});
-	const lastChairPerson = data?.officer ?? [];
+
+  const { data, isLoading, error } = useBoardQuery({
+		year: lastYear,
+		memberType: "officer",
+		position: "Chair",
+  });
+  console.log(data, "hello");
+  const lastChairPerson = data?.officer ?? [];
 
 	return (
 		<div className="w-full overflow-hidden ">

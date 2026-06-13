@@ -1,5 +1,5 @@
-import React, { useEffect, type JSX } from "react";
-import { useFetch } from "../hooks";
+import { useEffect, type JSX } from "react";
+import { useBoardYearsQuery } from "../hooks/queries/useBoardYearsQuery";
 
 // ─── Types ─────────────────────────────────────────────────────────────────────
 
@@ -8,10 +8,6 @@ interface BoardYearSelectorProps {
 	onYearChange: (year: string) => void;
 	/** The currently active year (controlled) */
 	selectedYear: string;
-}
-
-interface YearsResponse {
-	years: string[];
 }
 
 // ─── Component ─────────────────────────────────────────────────────────────────
@@ -37,9 +33,7 @@ const BoardYearSelector = ({
 }: BoardYearSelectorProps): JSX.Element => {
 	// Fetch the available years from the API.
 	// If your backend doesn't have a /years endpoint yet, see the comment below.
-	const { data, isLoading, error } = useFetch<YearsResponse>(
-		"/api/v1/board/years",
-	);
+	const { data: years = [], isLoading, error } = useBoardYearsQuery();
 
 	// ── Fallback: if the backend has no /years endpoint yet ─────────────────────
 	// Replace the useFetch above with this until you add the endpoint:
@@ -51,8 +45,6 @@ const BoardYearSelector = ({
 	// const isLoading = false;
 	// const error = null;
 	// ─────────────────────────────────────────────────────────────────────────────
-
-	const years = data?.years ?? [];
 
 	// Auto-select the first year if none is selected yet and data has arrived
 	useEffect(() => {
@@ -75,7 +67,7 @@ const BoardYearSelector = ({
 	if (error) {
 		return (
 			<p className="text-sm text-red-600 font-medium">
-				Failed to load years: {error}
+				Failed to load years: {error.message}
 			</p>
 		);
 	}
@@ -98,7 +90,7 @@ const BoardYearSelector = ({
 					id="board-year-select"
 					value={selectedYear}
 					onChange={(e) => onYearChange(e.target.value)}
-					className="appearance-none bg-white border border-gray-300 rounded-full py-2 px-2 text-sm font-medium text-gray-800 shadow-sm cursor-pointer transition duration-200hover:border-[#05568D] focus:outline-none focus:ring-2 focus:ring-[#05568D] focus:border-transparent"
+					className="appearance-none bg-white border border-gray-300 rounded-full py-1 pr-9 pl-3 text-sm font-medium text-gray-800 shadow-sm cursor-pointer transition duration-200hover:border-[#05568D] focus:outline-none focus:ring-2 focus:ring-[#05568D] focus:border-transparent"
 				>
 					{years.map((year) => (
 						<option key={year} value={year}>

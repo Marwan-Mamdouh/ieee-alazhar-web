@@ -1,6 +1,6 @@
 // Board.jsx (الكود النهائي المبسَّط للوصول العام)
 import { Fragment, useState } from "react";
-import { useFetch } from "../hooks";
+import { useBoardQuery } from "../hooks";
 import { Section, CardSlider, Card, BoardYearSelector } from "../component";
 import { selectMemberPosition } from "../utils/member.position";
 
@@ -21,13 +21,10 @@ const Board = () => {
 		new Date().getFullYear().toString(),
 	);
 
-	const { data, isLoading, error } = useFetch("/api/v1/board", {
-		queryParams: {
-			yearFrom: selectedYear,
-			yearTo: selectedYear,
-			memberType: "officer,technical,operation,branding",
-		},
-	});
+	const { data, isLoading, error } = useBoardQuery({
+    year: selectedYear,
+    memberType: "officer,technical,operation,branding",
+  });
 
 	const boardData = {
 		officer: data?.officer ?? [],

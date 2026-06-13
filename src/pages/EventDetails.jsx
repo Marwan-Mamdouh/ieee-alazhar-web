@@ -1,18 +1,10 @@
 import { useParams } from "react-router-dom";
 import { Card, CardSlider } from "../component";
-import { getEventById } from "../service/events";
-import { useEffect, useState } from "react";
+import { useEventByIdQuery } from "../hooks";
 
 const EventDetails = () => {
   const { id } = useParams();
-  const [event, setEvents] = useState();
-
-  useEffect(() => {
-    (async () => {
-      const result = await getEventById(id);
-      setEvents(result);
-    })();
-  }, [id]);
+  const { data: event, isLoading, error } = useEventByIdQuery(id);
 
   if (!event) {
     return (

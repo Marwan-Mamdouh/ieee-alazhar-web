@@ -1,16 +1,8 @@
-import { useState, useEffect } from "react";
-import { getEvents } from "../service/events";
+import { useEventsQuery } from "../hooks";
 import { Section, CardEvent } from "../component";
 
 const Events = () => {
-  const [events, setEvents] = useState([]);
-
-  useEffect(() => {
-    (async () => {
-      const result = await getEvents();
-      setEvents(result);
-    })();
-  }, []);
+  const { data: events } = useEventsQuery();
 
   return (
     <div>

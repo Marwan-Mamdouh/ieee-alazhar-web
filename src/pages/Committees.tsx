@@ -1,16 +1,19 @@
-import { useState, useEffect } from "react";
+import { useState } from "react";
 import { Section, CardLogo } from "../component";
-import { getCommittees, type Committee } from "../service/committees";
+import { useCommitteesQuery } from "../hooks";
 
 const Committees = () => {
   const [activeTab, setActiveTab] = useState("operation");
-  const [committees, setCommittees] = useState<Record<string, Committee[]>>({});
+  const { data: committees, isLoading, error } = useCommitteesQuery();
 
-  useEffect(() => {
-    getCommittees().then((data) => {
-      setCommittees(data);
-    });
-  }, []);
+  if (isLoading) {
+    return <div>Loading...</div>;
+  }
+
+  if (error) {
+    return <div>Error: {error.message}</div>;
+  }
+
   return (
     <div>
       <Section
@@ -20,7 +23,7 @@ const Committees = () => {
 
       <div className="px-10 pt-3 2xl:pt-16">
         <div className="inline-flex md:flex flex-wrap justify-center items-center mx-auto bg-[#acabab50] p-2 rounded-2xl w-full sm:gap-4 sm:w-fit sm:rounded-full h-13 mb-4">
-          {Object.keys(committees).map((section) => (
+          {committees &&Object.keys(committees).map((section) => (
             <button
               onClick={() => setActiveTab(section)}
               className={`px-4 py-1 text-white ${
@@ -50,7 +53,7 @@ const Committees = () => {
       </div>
 
       <div className="px-10 grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6 mt-5 mb-6">
-        {committees[activeTab] &&
+        {committees && 
           committees[activeTab].map((card) => (
             <CardLogo
               key={card._id}

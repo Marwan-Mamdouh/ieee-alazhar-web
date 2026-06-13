@@ -4,8 +4,7 @@ import { Link } from "react-router-dom";
 import { FaArrowUp } from "react-icons/fa";
 import { CardSlider, CardEvent, CardLogo, Card } from "../component";
 import { selectMemberPosition } from "../utils/member.position";
-import { useEffect, useState } from "react";
-import { getEvents } from "../service/events";
+import { useBoardQuery, useEventsQuery } from "../hooks";
 
 // imports المحتوى الثابت
 import Logo from "../assets/logo.WebP";
@@ -77,21 +76,12 @@ const heroSection = [
 // قائمة الأحداث الثابتة
 const Home = () => {
   const lastYear = new Date().getFullYear().toString();
-  const { data, isLoading, error } = useFetch(`/api/v1/board`, {
-    queryParams: {
-      yearFrom: lastYear,
-      memberType: "officer",
-    },
+  const { data, isLoading, error } = useBoardQuery({
+    year: lastYear,
+    memberType: "officer",
   });
   const officers = data?.officer ?? [];
-  const [events, setEvents] = useState([]);
-
-  useEffect(() => {
-    (async () => {
-      const result = await getEvents();
-      setEvents(result);
-    })();
-  }, []);
+  const { data: events } = useEventsQuery();
 
   return (
     <div>

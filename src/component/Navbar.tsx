@@ -1,7 +1,6 @@
 import { useState } from "react";
 import { Link, NavLink } from "react-router-dom";
-import { Menu, X } from "lucide-react";
-import { FaArrowUp } from "react-icons/fa";
+import { IoMenu, IoClose, IoArrowUpOutline  } from "react-icons/io5";
 import Logo from "../assets/logo.WebP";
 
 interface NavLinkItem {
@@ -62,7 +61,7 @@ const Navbar = () => {
           <span>Contact Us</span>
 
           <span className="w-6 h-6 flex items-center justify-center rounded-full bg-[#05568D]">
-            <FaArrowUp className="text-white rotate-90 text-sm" />
+            <IoArrowUpOutline className="text-white rotate-90 text-sm" />
           </span>
         </Link>
 
@@ -74,7 +73,7 @@ const Navbar = () => {
           aria-label="Toggle navigation menu"
           aria-expanded={isOpen}
         >
-          {isOpen ? <X size={24} /> : <Menu size={24} />}
+          {isOpen ? <IoClose size={24} /> : <IoMenu size={24} />}
         </button>
       </div>
 
@@ -99,7 +98,7 @@ const Navbar = () => {
           >
             <span>Contact Us</span>
             <span className="w-6 h-6 flex items-center justify-center rounded-full bg-[#05568D]">
-              <FaArrowUp className="text-white rotate-90 text-sm" />
+              <IoArrowUpOutline className="text-white rotate-90 text-sm" />
             </span>
           </Link>
         </div>

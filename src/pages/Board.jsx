@@ -61,9 +61,10 @@ const Board = () => {
 							<Card
 								key={member.id}
 								title={member.name}
-								subtitle={position}
+                subtitle={position}
+                text={member.bio}
 								imageSrc={member.image_url}
-								linkedinLink={member.linkedin}
+								linkedinLink={member.linkedin_url}
 							/>
 						);
 					})}

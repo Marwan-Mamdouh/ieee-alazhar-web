@@ -314,8 +314,9 @@ const Home = () => {
                 key={member.id}
                 title={member.name}
                 subtitle={selectMemberPosition(member, officers[0]?.gender)}
+                text={member.bio}
                 imageSrc={member.image_url}
-                linkedinLink={member.linkedin}
+                linkedinLink={member.linkedin_url}
               />
             ))}
           />
